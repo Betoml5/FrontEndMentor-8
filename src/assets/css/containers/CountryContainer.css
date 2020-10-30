@@ -1,0 +1,11 @@
+.country__container{
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid red;
+
+    align-items: center;
+    justify-items: center;
+
+    gap: 30px;
+}
