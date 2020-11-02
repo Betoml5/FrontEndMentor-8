@@ -1,37 +1,46 @@
 import React, { useState } from "react";
 import searchIcon from "../assets/static/search.png";
+import "../assets/css/components/Search.css";
 
-const Search = () => {
-
+const Search = (props) => {
   const [country, setCoutry] = useState([]);
 
-  const fetchCountry = async (country) => {
-    const response = await fetch(
-      `https://restcountries.eu/rest/v2/name/${country}`
-    );
-    const countryFetch = await response.json();
-    console.log(countryFetch);
-    return countryFetch;
-  };
-
   const onKeyUp = (e) => {
-    if (e.key === 'Enter') {
-        fetchCountry(country);
-    };
+    if ((e.target.value === "") | undefined | null) {
+      const divSearch = document.getElementsByClassName('search')
+      divSearch.className = "inputUndefined";
+    } else {
+      setCoutry(e.target.value);
+      if (e.key === "Enter") {
+        console.log(country);
+        fetchCountry(country).then((data) => {
+          props.setCountries(data);
+        });
+      }
+    }
   };
 
-  const handleChange = (e) => {
-    setCoutry(e.target.value)
-  }
+  const fetchCountry = async (country) => {
+    try {
+      const response = await fetch(
+        `https://restcountries.eu/rest/v2/name/${country}`
+      );
+      const countryFetch = await response.json();
+      console.log(countryFetch);
+      return countryFetch;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
-    <div>
+    <div className="search">
       <img src={searchIcon} alt="searchIcon" />
       <input
+        id="inputSearch"
         onKeyUp={onKeyUp}
-        onChange={handleChange}
         type="text"
-        placeholder="Search for a country"
+        placeholder="Search for a country..."
       />
     </div>
   );

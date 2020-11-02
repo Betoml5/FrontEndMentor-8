@@ -1,0 +1,22 @@
+select{
+    border: none;
+    outline: none;
+    background-color: hsl(209, 23%, 22%);
+    padding: 18px;
+    border-radius: 4px;
+    margin-right: 18px;
+    width: 65%;
+    color: #fff;
+    font-family: "Nunito Sans", sans-serif;
+    cursor: pointer;
+    
+
+}
+
+option{
+    margin-top: 50px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}

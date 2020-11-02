@@ -1,40 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter , Switch, Route } from 'react-router-dom';
-import CountryContainer from "./containers/CountryContainer";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Select from "./components/Select";
 import "./App.css";
-import Search from "./components/Search";
-import Header from './components/Header';
 
-function App() {
+import CountryContainer from "./containers/CountryContainer";
+import Header from "./components/Header";
+import Layout from "./components/Layout";
 
+const App = () => (
   <BrowserRouter>
-    <Header>
+    <Layout>
       <Switch>
-        <Route exact path='/' component={CountryContainer}/>
+        <Route exact path="/" component={CountryContainer} />
       </Switch>
-    </Header>
+    </Layout>
   </BrowserRouter>
-
-
-  const [countries, setCountries] = useState([]);
-
-  const getData = async () => {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
-    const data = await response.json();
-    // console.log(data);
-    setCountries(data);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  return (
-    <div className="App">
-      <Search />
-      <CountryContainer countries={countries} />
-    </div>
-  );
-}
+);
 
 export default App;
