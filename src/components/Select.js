@@ -21,7 +21,7 @@ const Select = (props) => {
   return (
     <>
       <select name="regions" onChange={onChange}>
-        <option disabled={true} selected={true}>
+        <option disabled={true}>
           Filter by Region
         </option>
         <option value="Africa">Africa</option>
