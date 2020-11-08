@@ -27,3 +27,19 @@
 .countryNotFound{
     color: #fff;
 }
+
+@media (max-width:475px){
+    .country__container{
+        grid-template-columns: 1fr;
+    }
+
+    .country__container-search{
+        grid-column: 1/1;
+    }
+
+    .country__container-select{
+        grid-column: 1/1;
+        width: 100%;
+        justify-content: center;
+    }
+}

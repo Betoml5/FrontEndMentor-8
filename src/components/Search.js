@@ -7,7 +7,7 @@ const Search = (props) => {
 
   const onKeyUp = (e) => {
     if ((e.target.value === "") | undefined | null) {
-      const divSearch = document.getElementsByClassName('search')
+      const divSearch = document.getElementsByClassName("search");
       divSearch.className = "inputUndefined";
     } else {
       setCoutry(e.target.value);
@@ -35,7 +35,7 @@ const Search = (props) => {
 
   return (
     <div className="search">
-      <img src={searchIcon} alt="searchIcon" />
+      <img id="searchIcon" src={searchIcon} alt="searchIcon" />
       <input
         id="inputSearch"
         onKeyUp={onKeyUp}

@@ -8,7 +8,6 @@ import Select from "../components/Select";
 
 const CountryContainer = () => {
   const [countries, setCountries] = useState([]);
-  // const [country, setCountry ] = useState([]);
 
   const API = "https://restcountries.eu/rest/v2";
 
@@ -27,20 +26,20 @@ const CountryContainer = () => {
     <>
       <div className="country__container">
         <div className="country__container-search">
-          <Search setCountries={setCountries}  />
+          <Search setCountries={setCountries} />
         </div>
 
         <div className="country__container-select">
-          <Select setCountries={setCountries}/>
+          <Select setCountries={setCountries} />
         </div>
 
         {countries.length > 0 ? (
           countries.map((country) => (
             <Country country={country} key={country.alpha2Code} />
           ))
-        ) : 
+        ) : (
           <NotFoundCountry setCountries={setCountries} />
-      }
+        )}
       </div>
     </>
   );

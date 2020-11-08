@@ -4,6 +4,11 @@ header {
   padding: 26px 0px;
 }
 
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
 .header__container {
   display: flex;
   align-items: center;
@@ -13,20 +18,45 @@ header {
   font-family: "Nunito Sans", sans-serif;
 }
 
-.header__container-h2 h2 {
+.header__container-h2 {
   color: #fff;
 }
 
 .header__container-dark {
-    align-items: center;
-    width: 11%;
-    display: flex;
-    justify-content: space-between;
+  align-items: center;
+  width: 8%;
+  display: flex;
+  justify-content: space-between;
 }
-.header__container-dark h3 {
+.header__container-dark {
   color: #fff;
+  cursor: pointer;
 }
 
 .header__container-dark img {
   width: 19px;
+}
+
+.bodyWhite{
+  background-color: hsl(0, 0%, 98%);
+}
+
+.textWhite{
+  color: #000;
+}
+
+@media (max-width: 1440px) {
+  .header__container-dark {
+    width: 11%;
+  }
+}
+
+@media (max-width: 475px){
+  .header__container{
+    flex-direction: column;
+  }
+
+  .header__container-dark{
+    width: 45%;
+  }
 }

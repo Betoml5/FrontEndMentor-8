@@ -10,7 +10,7 @@
   margin-left: 76px;
 }
 
-.search input[type="text"] {
+input {
   border: none;
   background: none;
   outline: none;
@@ -18,8 +18,9 @@
   width: 100%;
 }
 
-.search input[type="text"]::placeholder {
-  color: #fff;
+.search input::placeholder {
+  color: #ccc;
+  font-weight: bold;
 }
 
 .search img {
@@ -31,8 +32,15 @@
    background-color: white;
 }
 
+@media (max-width: 475px){
+  .search{
+    margin: none;
+  }
+}
+
 @media (max-width: 1440px) {
   .search {
     margin-left: 16px;
   }
 }
+

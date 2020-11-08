@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/components/CountryDetail.css";
+import arrowWhite from "../assets/static/left-arrow-white.png";
+import arrowBlack from "../assets/static/left-arrow-black.png";
+import { Link } from "react-router-dom";
 
 const CountryDetail = (props) => {
   const [country, setCountry] = useState([]);
@@ -18,17 +21,23 @@ const CountryDetail = (props) => {
     }
   };
 
+  // const handleBack = () => {
+  //   props.history.push("/");
+  // };
+
   useEffect(() => {
     getCountry(code);
   }, []);
 
   return (
     <div className="countryDetailContainer">
-      <div>
-        <button>
-          <img src="" alt="btnBack" />
-          <p>Back</p>
-        </button>
+      <div className="btn__container">
+        <Link to="/">
+          <button>
+            <img src={arrowWhite} alt="btnBack" />
+            <p>Back</p>
+          </button>
+        </Link>
       </div>
 
       <div className="countryDetailContainer__flagndes">
@@ -64,38 +73,40 @@ const CountryDetail = (props) => {
 
             <div className="column">
               <p>
-                <span>Top Level Domain:</span> {country.topLevelDomain}
+                <span>Top Level Domain:</span>
+                {country.topLevelDomain}
               </p>
-              {country.currencies && (
-                <div>
-                  <span>Currencies:</span>
-                  <p> {country.currencies[0].name}</p>
-                </div>
-              )}
-              <div className="lang">
+
+              <p className="lang">
+                <span>Currencies:</span>
+                {country.currencies && <p> {country.currencies[0].name}</p>}
+              </p>
+
+              <p className="lang">
                 <span>Languages:</span>
                 {country.languages && (
-                  <div>
-                    <span>Currencies:</span>
+                  <div className="languages">
                     {country.languages.map((i, index) => (
                       <p key={index}>{i.name}</p>
                     ))}
                   </div>
                 )}
-              </div>
+              </p>
             </div>
           </div>
           <div>
-            <div className="lang">
+            <p className="lang border-countries">
               <span>Border Countries:</span>
               {country.borders && (
-                <div>
+                <div className="borders ">
                   {country.borders.map((i, index) => (
-                    <p key={index}>{i}</p>
+                    <p className="borders-item" key={index}>
+                      {i}
+                    </p>
                   ))}
                 </div>
               )}
-            </div>
+            </p>
           </div>
         </div>
       </div>

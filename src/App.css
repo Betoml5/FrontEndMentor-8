@@ -1,3 +1,16 @@
 body{
     background-color: hsl(207, 26%, 17%);
 }
+
+.countryWhite{
+    background-color: hsl(0, 0%, 100%);
+}
+
+.textWhite{
+    color: #000 ;
+}
+
+
+
+
+
