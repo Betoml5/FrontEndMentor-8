@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "../assets/css/containers/CountryContainer.css";
+
+import { fetchAllCountries } from "../services/country";
 
 import NotFoundCountry from "../components/NotFoundCountry";
 import Country from "../components/Country";
 import Search from "../components/Search";
 import Select from "../components/Select";
 
+import "../assets/css/containers/CountryContainer.css";
+
 const CountryContainer = () => {
   const [countries, setCountries] = useState([]);
 
-  const API = "https://restcountries.eu/rest/v2";
-
-  const getData = async (api) => {
-    const response = await fetch(`${api}/all`);
-    const data = await response.json();
-    console.log(data);
-    setCountries(data);
-  };
-
   useEffect(() => {
-    getData(API);
+    fetchAllCountries()
+    .then((data) => setCountries(data));
   }, []);
 
   return (

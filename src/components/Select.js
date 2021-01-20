@@ -1,19 +1,12 @@
 import React, { useState } from "react";
+import {fetchCountryByRegion} from '../services/country';
 import "../assets/css/components/Select.css";
 
 const Select = (props) => {
   const [option, setOption] = useState("");
 
-  const getData = async (region) => {
-    const response = await fetch(
-      `https://restcountries.eu/rest/v2/region/${region}`
-    );
-    const data = await response.json();
-    return data;
-  };
-
   const onChange = (e) => {
-    getData(e.target.value).then((res) => {
+    fetchCountryByRegion(e.target.value).then((res) => {
       props.setCountries(res);
     });
   };

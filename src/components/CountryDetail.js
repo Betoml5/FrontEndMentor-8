@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/components/CountryDetail.css";
+import { Link } from "react-router-dom";
+import {fetchCountryByCode} from '../services/country'
+
 import arrowWhite from "../assets/static/left-arrow-white.png";
 import arrowBlack from "../assets/static/left-arrow-black.png";
-import { Link } from "react-router-dom";
+import "../assets/css/components/CountryDetail.css";
 
 const CountryDetail = (props) => {
   const [country, setCountry] = useState([]);
 
   const { code } = props.match.params;
 
-  const getCountry = async (code) => {
-    try {
-      const res =
-        (await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)) || [];
-      const data = (await res.json()) || [];
-      console.log(data);
-      setCountry(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const getCountry = async (code) => {
+  //   try {
+  //     const res =
+  //       (await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)) || [];
+  //     const data = (await res.json()) || [];
+  //     console.log(data);
+  //     setCountry(data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   // const handleBack = () => {
   //   props.history.push("/");
   // };
 
   useEffect(() => {
-    getCountry(code);
+    fetchCountryByCode(code)
+    .then((data) => setCountry(data));
   }, []);
 
   return (

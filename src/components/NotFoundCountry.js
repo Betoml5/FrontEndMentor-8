@@ -1,17 +1,10 @@
 import React from "react";
+import { fetchAllCountries } from "../services/country";
 import "../assets/css/components/NotFoundCountry.css";
 
 const NotFoundCountry = (props) => {
-  const API = "https://restcountries.eu/rest/v2";
-
-  const getData = async (api) => {
-    const response = await fetch(`${api}/all`);
-    const data = await response.json();
-    return data;
-  };
-
   const onClick = () => {
-    getData(API).then((data) => {
+    fetchAllCountries.then((data) => {
       props.setCountries(data);
     });
   };
