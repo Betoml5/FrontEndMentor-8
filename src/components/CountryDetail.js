@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {fetchCountryByCode} from '../services/country'
-
+import { fetchCountryByCode } from "../services/country";
+import Loader from "./Loader";
 import arrowWhite from "../assets/static/left-arrow-white.png";
-import arrowBlack from "../assets/static/left-arrow-black.png";
 import "../assets/css/components/CountryDetail.css";
 
 const CountryDetail = (props) => {
@@ -11,33 +10,18 @@ const CountryDetail = (props) => {
 
   const { code } = props.match.params;
 
-  // const getCountry = async (code) => {
-  //   try {
-  //     const res =
-  //       (await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)) || [];
-  //     const data = (await res.json()) || [];
-  //     console.log(data);
-  //     setCountry(data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
-  // const handleBack = () => {
-  //   props.history.push("/");
-  // };
-
   useEffect(() => {
-    fetchCountryByCode(code)
-    .then((data) => setCountry(data));
+    fetchCountryByCode(code).then((data) => {
+      setCountry(data);
+    });
   }, []);
 
-  return (
+  return country ? (
     <div className="countryDetailContainer">
       <div className="btn__container">
         <Link to="/">
-          <button>
-            <img src={arrowWhite} alt="btnBack" />
+          <button id="btn__container-btn" className="btn__container-btn">
+            <img id="btn__container-btn-image" src={arrowWhite} alt="btnBack" />
             <p>Back</p>
           </button>
         </Link>
@@ -114,6 +98,8 @@ const CountryDetail = (props) => {
         </div>
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };
 

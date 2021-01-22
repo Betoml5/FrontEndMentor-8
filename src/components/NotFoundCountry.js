@@ -4,7 +4,7 @@ import "../assets/css/components/NotFoundCountry.css";
 
 const NotFoundCountry = (props) => {
   const onClick = () => {
-    fetchAllCountries.then((data) => {
+    fetchAllCountries().then((data) => {
       props.setCountries(data);
     });
   };

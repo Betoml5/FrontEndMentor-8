@@ -6,6 +6,8 @@ import NotFoundCountry from "../components/NotFoundCountry";
 import Country from "../components/Country";
 import Search from "../components/Search";
 import Select from "../components/Select";
+import Loader from '../components/Loader';
+
 
 import "../assets/css/containers/CountryContainer.css";
 
@@ -19,6 +21,8 @@ const CountryContainer = () => {
 
   return (
     <>
+      
+
       <div className="country__container">
         <div className="country__container-search">
           <Search setCountries={setCountries} />

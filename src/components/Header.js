@@ -7,6 +7,7 @@ import "../assets/css/components/Header.css";
 
 const handleDarkMode = (e) => {
   e.preventDefault();
+  darkMode();
 };
 
 
