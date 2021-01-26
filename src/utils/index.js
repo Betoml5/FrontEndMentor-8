@@ -1,8 +1,8 @@
 import searchWhite from "../assets/static/search.png";
 import searchBlack from "../assets/static/searchBlack.png";
 
-import leftArrowWhite from '../assets/static/left-arrow-white.png'; 
-import leftArrowBlack from '../assets/static/left-arrow-black.png'; 
+import leftArrowWhite from "../assets/static/left-arrow-white.png";
+import leftArrowBlack from "../assets/static/left-arrow-black.png";
 import moonIcon from "../assets/static/moon.png";
 import blackMoon from "../assets/static/blackMoon.png";
 
@@ -17,16 +17,21 @@ const darkMode = () => {
   const image = document.body.querySelector("#moonImage");
   const imageSearch = document.body.querySelector("#searchIcon");
   const countryDetailBtn = document.body.querySelector(".btn__container-btn");
-  const countryDetailBtnImage = document.body.querySelector("#btn__container-btn-image");
+  const countryDetailBtnImage = document.body.querySelector(
+    "#btn__container-btn-image"
+  );
+  const borderItems = document.getElementsByClassName("borders-item");
 
+  Array.from(borderItems).forEach((element) => {
+    element && element.classList.toggle("border-white");
+  });
 
   if (countryDetailBtn) {
     countryDetailBtn.classList.toggle("btn__container-btn-white");
     countryDetailBtnImage.getAttribute("src") === leftArrowWhite
-    ? countryDetailBtnImage.setAttribute("src", leftArrowBlack)
-    : countryDetailBtnImage.setAttribute("src", leftArrowWhite);
+      ? countryDetailBtnImage.setAttribute("src", leftArrowBlack)
+      : countryDetailBtnImage.setAttribute("src", leftArrowWhite);
   }
-  
 
   if (imageSearch) {
     imageSearch.getAttribute("src") === searchWhite
@@ -39,8 +44,6 @@ const darkMode = () => {
       ? image.setAttribute("src", blackMoon)
       : image.setAttribute("src", moonIcon);
   }
-
-
 
   for (let i = 0; i < select.length; i++) {
     select[i].classList.toggle("bodyWhite");

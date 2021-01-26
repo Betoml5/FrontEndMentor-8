@@ -5,10 +5,12 @@ import Loader from "./Loader";
 import arrowWhite from "../assets/static/left-arrow-white.png";
 import "../assets/css/components/CountryDetail.css";
 
-const CountryDetail = (props) => {
+const CountryDetail = (props, active) => {
   const [country, setCountry] = useState([]);
 
   const { code } = props.match.params;
+
+  const darkModeActive = 'countryDetailContainer';
 
   useEffect(() => {
     fetchCountryByCode(code).then((data) => {
